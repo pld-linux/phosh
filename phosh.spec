@@ -10,7 +10,7 @@ Source0:	https://download.gnome.org/sources/phosh/0.14/%{name}-%{version}.tar.xz
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
-BuildRequires:	gcr-devel >= 2.7.5
+BuildRequires:	gcr-ui-devel >= 3.7.5
 BuildRequires:	glib2-devel >= 1:2.62
 BuildRequires:	gnome-desktop-devel >= 3.26
 BuildRequires:	gobject-introspection-devel
@@ -35,7 +35,7 @@ BuildRequires:	wayland-devel >= 1.14
 BuildRequires:	wayland-protocols >= 1.12
 BuildRequires:	xz
 Requires:	NetworkManager >= 2:1.14
-Requires:	gcr >= 2.7.5
+Requires:	gcr-ui >= 3.7.5
 Requires:	glib2 >= 1:2.62
 Requires:	gnome-desktop >= 3.26
 Requires:	gtk+3 >= 3.22
