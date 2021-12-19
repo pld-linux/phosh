@@ -2,7 +2,7 @@ Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
 Version:	0.14.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications
 Source0:	https://download.gnome.org/sources/phosh/0.14/%{name}-%{version}.tar.xz
@@ -68,7 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 # unify
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/{zh_Hans_CN,zh_CN}
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/zh{_Hans,}_CN
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/es{_ES,}
 
 # phosn and call-ui domains
 %find_lang %{name} --all-name
