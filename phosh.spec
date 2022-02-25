@@ -1,15 +1,16 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.15.0
+Version:	0.16.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.15/%{name}-%{version}.tar.xz
-# Source0-md5:	7f9aa1d23d481a0b225f5163b7416155
+Source0:	https://download.gnome.org/sources/phosh/0.16/%{name}-%{version}.tar.xz
+# Source0-md5:	76c01b7e873d29ac2bd3fae0871ee6c0
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
+BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
 BuildRequires:	glib2-devel >= 1:2.62
 BuildRequires:	gnome-desktop-devel >= 3.26
@@ -20,7 +21,7 @@ BuildRequires:	libcallaudio-devel
 BuildRequires:	libfeedback-devel
 BuildRequires:	libhandy1-devel >= 1.2
 BuildRequires:	libsecret-devel
-BuildRequires:	meson >= 0.52.0
+BuildRequires:	meson >= 0.54.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.105
@@ -58,6 +59,7 @@ Phosh to oparta na czystym wayland powłoka dla urządzeń przenośnych.
 
 %build
 %meson build \
+	-Dcallui-i18n=true \
 	-Dsystemd=true
 
 %ninja_build -C build
@@ -98,5 +100,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-session/sessions/phosh.session
 %{_datadir}/phosh
 %{_datadir}/wayland-sessions/phosh.desktop
-%{_desktopdir}/sm.puri.OSK0.desktop
 %{_desktopdir}/sm.puri.Phosh.desktop
