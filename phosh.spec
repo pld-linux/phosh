@@ -1,12 +1,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.16.0
+Version:	0.17.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.16/%{name}-%{version}.tar.xz
-# Source0-md5:	76c01b7e873d29ac2bd3fae0871ee6c0
+Source0:	https://download.gnome.org/sources/phosh/0.17/%{name}-%{version}.tar.xz
+# Source0-md5:	cef637f183a56eac838eeebc076c2a7d
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -71,7 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 
 # unify
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/zh{_Hans,}_CN
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/es_ES
 
 # phosn and call-ui domains
 %find_lang %{name} --all-name
@@ -94,6 +93,10 @@ rm -rf $RPM_BUILD_ROOT
 %{systemduserunitdir}/sm.puri.Phosh.target
 %dir %{systemduserunitdir}/gnome-session@phosh.target.d
 %{systemduserunitdir}/gnome-session@phosh.target.d/session.conf
+# FIXME: which package should own these dirs?
+%dir %{_datadir}/xdg-desktop-portal
+%dir %{_datadir}/xdg-desktop-portal/portals
+%{_datadir}/xdg-desktop-portal/portals/phosh.portal
 %{_datadir}/glib-2.0/schemas/00_sm.puri.Phosh.gschema.override
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
