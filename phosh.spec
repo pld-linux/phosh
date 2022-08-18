@@ -1,12 +1,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.17.0
+Version:	0.20.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.17/%{name}-%{version}.tar.xz
-# Source0-md5:	cef637f183a56eac838eeebc076c2a7d
+Source0:	https://download.gnome.org/sources/phosh/0.20/%{name}-%{version}.tar.xz
+# Source0-md5:	869f8ff32a59d792e185cc4c188fa831
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -59,6 +59,7 @@ Phosh to oparta na czystym wayland powłoka dla urządzeń przenośnych.
 
 %build
 %meson build \
+	--libexecdir=%{_libexecdir}/phosh \
 	-Dcallui-i18n=true \
 	-Dsystemd=true
 
@@ -88,7 +89,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/phosh
-%attr(755,root,root) %{_libexecdir}/phosh
+%dir %{_libdir}/phosh
+%dir %{_libdir}/phosh/plugins
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-calendar.so
+%if "%{_libexecdir}" != "%{_libdir}"
+%dir %{_libexecdir}/phosh
+%endif
+%attr(755,root,root) %{_libexecdir}/phosh/phosh
 %{systemduserunitdir}/sm.puri.Phosh.service
 %{systemduserunitdir}/sm.puri.Phosh.target
 %dir %{systemduserunitdir}/gnome-session@phosh.target.d
@@ -104,3 +111,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/phosh
 %{_datadir}/wayland-sessions/phosh.desktop
 %{_desktopdir}/sm.puri.Phosh.desktop
+%{_iconsdir}/hicolor/symbolic/apps/sm.puri.Phosh-symbolic.svg
