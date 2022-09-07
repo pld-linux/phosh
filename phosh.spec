@@ -1,15 +1,16 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.20.0
+Version:	0.21.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.20/%{name}-%{version}.tar.xz
-# Source0-md5:	869f8ff32a59d792e185cc4c188fa831
+Source0:	https://download.gnome.org/sources/phosh/0.21/%{name}-%{version}.tar.xz
+# Source0-md5:	4b883cb90cc0cbcd807b431e4c233d5f
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
+BuildRequires:	evolution-data-server-devel >= 3.33.1
 BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
 BuildRequires:	glib2-devel >= 1:2.62
@@ -17,7 +18,7 @@ BuildRequires:	gnome-desktop-devel >= 3.26
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22
-BuildRequires:	libcallaudio-devel
+BuildRequires:	libcallaudio-devel >= 0.1
 BuildRequires:	libfeedback-devel
 BuildRequires:	libhandy1-devel >= 1.2
 BuildRequires:	libsecret-devel
@@ -92,10 +93,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/phosh
 %dir %{_libdir}/phosh/plugins
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-calendar.so
+%{_libdir}/phosh/plugins/calendar.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-upcoming-events.so
+%{_libdir}/phosh/plugins/upcoming-events.plugin
 %if "%{_libexecdir}" != "%{_libdir}"
 %dir %{_libexecdir}/phosh
 %endif
 %attr(755,root,root) %{_libexecdir}/phosh/phosh
+%attr(755,root,root) %{_libexecdir}/phosh/phosh-calendar-server
 %{systemduserunitdir}/sm.puri.Phosh.service
 %{systemduserunitdir}/sm.puri.Phosh.target
 %dir %{systemduserunitdir}/gnome-session@phosh.target.d
@@ -104,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/phosh.portal
+%{_datadir}/dbus-1/services/sm.puri.Phosh.CalendarServer.service
 %{_datadir}/glib-2.0/schemas/00_sm.puri.Phosh.gschema.override
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
