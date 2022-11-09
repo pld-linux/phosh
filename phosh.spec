@@ -1,19 +1,20 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.21.0
+Version:	0.22.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.21/%{name}-%{version}.tar.xz
-# Source0-md5:	4b883cb90cc0cbcd807b431e4c233d5f
+Source0:	https://download.gnome.org/sources/phosh/0.22/%{name}-%{version}.tar.xz
+# Source0-md5:	cf0f88dc2afc576a457bdafbb4f3db9a
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
 BuildRequires:	evolution-data-server-devel >= 3.33.1
 BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
-BuildRequires:	glib2-devel >= 1:2.62
+BuildRequires:	glib2-devel >= 1:2.66
+# 43 when available
 BuildRequires:	gnome-desktop-devel >= 3.26
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel
@@ -38,7 +39,7 @@ BuildRequires:	wayland-protocols >= 1.12
 BuildRequires:	xz
 Requires:	NetworkManager >= 2:1.14
 Requires:	gcr-ui >= 3.7.5
-Requires:	glib2 >= 1:2.62
+Requires:	glib2 >= 1:2.66
 Requires:	gnome-desktop >= 3.26
 Requires:	gtk+3 >= 3.22
 Requires:	libhandy1 >= 1.2
@@ -94,6 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/phosh/plugins
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-calendar.so
 %{_libdir}/phosh/plugins/calendar.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-ticket-box.so
+%{_libdir}/phosh/plugins/ticket-box.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-upcoming-events.so
 %{_libdir}/phosh/plugins/upcoming-events.plugin
 %if "%{_libexecdir}" != "%{_libdir}"
@@ -113,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/00_sm.puri.Phosh.gschema.override
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
+%{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.ticket-box.gschema.xml
 %{_datadir}/gnome-session/sessions/phosh.session
 %{_datadir}/phosh
 %{_datadir}/wayland-sessions/phosh.desktop
