@@ -33,7 +33,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.105
 BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	systemd-devel >= 1:241
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udev-glib-devel
@@ -105,9 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 %if %{with apidocs}
-# FIXME: where to package gi-docgen generated docs?
-install -d $RPM_BUILD_ROOT%{_gtkdocdir}
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/phosh-0 $RPM_BUILD_ROOT%{_gtkdocdir}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/phosh-0 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
 # outdated file, zh_CN is more complete
@@ -176,4 +175,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/phosh-0
+%{_gidocdir}/phosh-0
