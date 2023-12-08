@@ -5,12 +5,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.31.1
-Release:	2
+Version:	0.34.0
+Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.31/%{name}-%{version}.tar.xz
-# Source0-md5:	22f22e00eb4aad29bd3398d6997e056c
+Source0:	https://download.gnome.org/sources/phosh/0.34/%{name}-%{version}.tar.xz
+# Source0-md5:	f62f378e4c841b2e2ba867391ee543ed
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -134,6 +134,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/calendar.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-emergency-info.so
 %{_libdir}/phosh/plugins/emergency-info.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-launcher-box.so
+%{_libdir}/phosh/plugins/launcher-box.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-ticket-box.so
 %{_libdir}/phosh/plugins/ticket-box.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-upcoming-events.so
@@ -158,6 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/00_sm.puri.Phosh.gschema.override
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
+%{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.launcher-box.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.ticket-box.gschema.xml
 %{_datadir}/gnome-session/sessions/phosh.session
 %{_datadir}/phosh
