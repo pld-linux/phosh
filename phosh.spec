@@ -14,6 +14,7 @@ Source0:	https://download.gnome.org/sources/phosh/0.34/%{name}-%{version}.tar.xz
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
+BuildRequires:	evince-devel >= 3
 BuildRequires:	evolution-data-server-devel >= 3.33.1
 BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
