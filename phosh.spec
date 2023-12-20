@@ -5,12 +5,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.34.0
-Release:	2
+Version:	0.34.1
+Release:	1
 License:	GPL v3+
 Group:		Applications
 Source0:	https://download.gnome.org/sources/phosh/0.34/%{name}-%{version}.tar.xz
-# Source0-md5:	f62f378e4c841b2e2ba867391ee543ed
+# Source0-md5:	98b4eb7279967675dff2782930ff602f
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
