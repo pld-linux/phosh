@@ -5,12 +5,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.34.1
+Version:	0.36.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.34/%{name}-%{version}.tar.xz
-# Source0-md5:	98b4eb7279967675dff2782930ff602f
+Source0:	https://download.gnome.org/sources/phosh/0.36/%{name}-%{version}.tar.xz
+# Source0-md5:	3a77431601a7a3b7c9fde60917f08399
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -19,7 +19,7 @@ BuildRequires:	evolution-data-server-devel >= 3.33.1
 BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
-BuildRequires:	glib2-devel >= 1:2.74
+BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gnome-desktop-devel >= 43
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel >= 42
@@ -28,7 +28,7 @@ BuildRequires:	libcallaudio-devel >= 0.1
 BuildRequires:	libfeedback-devel >= 0.2.0
 BuildRequires:	libhandy1-devel >= 1.2
 BuildRequires:	libsecret-devel
-BuildRequires:	meson >= 0.54.0
+BuildRequires:	meson >= 1.0.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.105
@@ -45,7 +45,7 @@ BuildRequires:	wayland-protocols >= 1.12
 BuildRequires:	xz
 Requires:	NetworkManager >= 2:1.14
 Requires:	gcr-ui >= 3.7.5
-Requires:	glib2 >= 1:2.74
+Requires:	glib2 >= 1:2.76
 Requires:	gnome-desktop >= 43
 Requires:	gtk+3 >= 3.22
 Requires:	libfeedback >= 0.2.0
