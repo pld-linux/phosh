@@ -1,4 +1,4 @@
-# TODO: system gmobile, libcall-ui
+# TODO: system libcall-ui?
 #
 # Conditional build:
 %bcond_without	apidocs	# API documentation
@@ -6,12 +6,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.38.0
+Version:	0.39.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.38/%{name}-%{version}.tar.xz
-# Source0-md5:	e3cd52b0afc374609b26d3bf2e74d804
+Source0:	https://download.gnome.org/sources/phosh/0.39/%{name}-%{version}.tar.xz
+# Source0-md5:	8af35e47ab91f009112b7b97bdf12c78
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -21,6 +21,7 @@ BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.76
+BuildRequires:	gmobile-devel >= 0.1.0
 BuildRequires:	gnome-desktop-devel >= 43
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel >= 42
@@ -30,6 +31,7 @@ BuildRequires:	libcallaudio-devel >= 0.1
 BuildRequires:	libfeedback-devel >= 0.2.0
 BuildRequires:	libhandy1-devel >= 1.2
 BuildRequires:	libsecret-devel
+BuildRequires:	libsoup3-devel >= 3.0
 BuildRequires:	meson >= 1.0.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
@@ -37,6 +39,7 @@ BuildRequires:	polkit-devel >= 0.105
 BuildRequires:	pulseaudio-devel >= 13
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.029
+# or libelogind
 BuildRequires:	systemd-devel >= 1:241
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udev-glib-devel
@@ -48,6 +51,7 @@ BuildRequires:	xz
 Requires:	NetworkManager >= 2:1.14
 Requires:	gcr-ui >= 3.7.5
 Requires:	glib2 >= 1:2.76
+Requires:	gmobile >= 0.1.0
 Requires:	gnome-desktop >= 43
 Requires:	gtk+3 >= 3.22
 Requires:	json-glib >= 1.6.2
@@ -70,9 +74,6 @@ Phosh to oparta na czystym wayland powłoka dla urządzeń przenośnych.
 Summary:	Header file for Phosh plugins
 Summary(pl.UTF-8):	Plik nagłówkowy do tworzenia wtyczek Phosha
 Group:		Development/Libraries
-# for gmobile
-Requires:	glib2-devel >= 1:2.76
-Requires:	json-glib-devel >= 1.6.2
 
 %description devel
 Header file for Phosh plugins.
@@ -138,7 +139,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/phosh-session
-%attr(755,root,root) %{_libdir}/libgmobile.so.0c
 %dir %{_libdir}/phosh
 %dir %{_libdir}/phosh/plugins
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-caffeine-quick-setting.so
@@ -149,6 +149,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/emergency-info.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-launcher-box.so
 %{_libdir}/phosh/plugins/launcher-box.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-night-light-quick-setting.so
+%{_libdir}/phosh/plugins/night-light-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-simple-custom-quick-setting.so
 %{_libdir}/phosh/plugins/simple-custom-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-ticket-box.so
@@ -188,9 +190,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgmobile.so
 %{_includedir}/phosh
-%{_pkgconfigdir}/gmobile.pc
 %{_pkgconfigdir}/phosh-plugins.pc
 
 %files apidocs
