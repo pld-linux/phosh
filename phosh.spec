@@ -6,12 +6,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.39.0
+Version:	0.40.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.39/%{name}-%{version}.tar.xz
-# Source0-md5:	8af35e47ab91f009112b7b97bdf12c78
+Source0:	https://download.gnome.org/sources/phosh/0.40/%{name}-%{version}.tar.xz
+# Source0-md5:	00a597e19b883b4ab31e2f618200deeb
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -19,6 +19,7 @@ BuildRequires:	evince-devel >= 3
 BuildRequires:	evolution-data-server-devel >= 3.33.1
 BuildRequires:	fribidi-devel
 BuildRequires:	gcr-ui-devel >= 3.7.5
+BuildRequires:	gettext-tools
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gmobile-devel >= 0.1.0
@@ -39,7 +40,7 @@ BuildRequires:	polkit-devel >= 0.105
 BuildRequires:	pulseaudio-devel >= 13
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.029
-# or libelogind
+# or libelogind >= 241
 BuildRequires:	systemd-devel >= 1:241
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udev-glib-devel
@@ -103,7 +104,6 @@ Dokumentacja API Phosh.
 	-Dcallui-i18n=true \
 	%{?with_apidocs:-Dgtk_doc=true} \
 	-Dman=true \
-	-Dsystemd=true \
 	-Dtools=true
 
 %ninja_build -C build
@@ -145,10 +145,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/caffeine-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-calendar.so
 %{_libdir}/phosh/plugins/calendar.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-dark-mode-quick-setting.so
+%{_libdir}/phosh/plugins/dark-mode-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-emergency-info.so
 %{_libdir}/phosh/plugins/emergency-info.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-launcher-box.so
 %{_libdir}/phosh/plugins/launcher-box.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-mobile-data-quick-setting.so
+%{_libdir}/phosh/plugins/mobile-data-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-night-light-quick-setting.so
 %{_libdir}/phosh/plugins/night-light-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-simple-custom-quick-setting.so
@@ -174,7 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/phosh.portal
 %{_datadir}/dbus-1/services/sm.puri.Phosh.CalendarServer.service
-%{_datadir}/glib-2.0/schemas/00_sm.puri.Phosh.gschema.override
+%{_datadir}/glib-2.0/schemas/00_mobi.Phosh.gschema.override
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.launcher-box.gschema.xml
@@ -192,6 +196,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_includedir}/phosh
 %{_pkgconfigdir}/phosh-plugins.pc
+%{_pkgconfigdir}/phosh-settings.pc
 
 %files apidocs
 %defattr(644,root,root,755)
