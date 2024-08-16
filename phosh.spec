@@ -6,12 +6,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.40.0
+Version:	0.41.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.40/%{name}-%{version}.tar.xz
-# Source0-md5:	00a597e19b883b4ab31e2f618200deeb
+Source0:	https://download.gnome.org/sources/phosh/0.41/%{name}-%{version}.tar.xz
+# Source0-md5:	6f0bdab447a5da7fa7bdee0f1b6c4315
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -23,13 +23,14 @@ BuildRequires:	gettext-tools
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gmobile-devel >= 0.1.0
+BuildRequires:	gnome-bluetooth3-devel >= 46.0
 BuildRequires:	gnome-desktop-devel >= 43
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel >= 42
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	json-glib-devel >= 1.6.2
 BuildRequires:	libcallaudio-devel >= 0.1
-BuildRequires:	libfeedback-devel >= 0.2.0
+BuildRequires:	libfeedback-devel >= 0.4.0
 BuildRequires:	libhandy1-devel >= 1.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsoup3-devel >= 3.0
@@ -56,7 +57,7 @@ Requires:	gmobile >= 0.1.0
 Requires:	gnome-desktop >= 43
 Requires:	gtk+3 >= 3.22
 Requires:	json-glib >= 1.6.2
-Requires:	libfeedback >= 0.2.0
+Requires:	libfeedback >= 0.4.0
 Requires:	libhandy1 >= 1.2
 Requires:	polkit >= 0.105
 Requires:	pulseaudio >= 13
@@ -161,6 +162,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/ticket-box.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-upcoming-events.so
 %{_libdir}/phosh/plugins/upcoming-events.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-wifi-hotspot-quick-setting.so
+%{_libdir}/phosh/plugins/wifi-hotspot-quick-setting.plugin
 %dir %{_libdir}/phosh/plugins/prefs
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-emergency-info.so
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-ticket-box.so
