@@ -1,4 +1,4 @@
-# TODO: system libcall-ui?
+# TODO: system libcall-ui (when it's ready to use system-wide)?
 #
 # Conditional build:
 %bcond_without	apidocs	# API documentation
@@ -6,12 +6,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.41.1
+Version:	0.42.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.41/%{name}-%{version}.tar.xz
-# Source0-md5:	043eead6d55faf21f990b70b01c4b338
+Source0:	https://download.gnome.org/sources/phosh/0.42/%{name}-%{version}.tar.xz
+# Source0-md5:	b112b3cb70fe2e3095d249530858c356
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -24,6 +24,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gmobile-devel >= 0.1.0
 BuildRequires:	gnome-bluetooth3-devel >= 46.0
+# >= 45 when released
 BuildRequires:	gnome-desktop-devel >= 43
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gsettings-desktop-schemas-devel >= 42
@@ -37,7 +38,7 @@ BuildRequires:	libsoup3-devel >= 3.0
 BuildRequires:	meson >= 1.0.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	polkit-devel >= 0.105
+BuildRequires:	polkit-devel >= 0.122
 BuildRequires:	pulseaudio-devel >= 13
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.029
@@ -59,7 +60,7 @@ Requires:	gtk+3 >= 3.22
 Requires:	json-glib >= 1.6.2
 Requires:	libfeedback >= 0.4.0
 Requires:	libhandy1 >= 1.2
-Requires:	polkit >= 0.105
+Requires:	polkit >= 0.122
 Requires:	pulseaudio >= 13
 Requires:	systemd-libs >= 1:241
 Requires:	upower >= 0.99.1
@@ -167,6 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/phosh/plugins/prefs
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-emergency-info.so
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-ticket-box.so
+%attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-upcoming-events.so
 %if "%{_libexecdir}" != "%{_libdir}"
 %dir %{_libexecdir}/phosh
 %endif
@@ -186,6 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.launcher-box.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.ticket-box.gschema.xml
+%{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.upcoming-events.gschema.xml
 %{_datadir}/gnome-session/sessions/phosh.session
 %{_datadir}/phosh
 %{_datadir}/wayland-sessions/phosh.desktop
