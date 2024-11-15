@@ -6,12 +6,12 @@
 Summary:	Phosh - pure wayland shell for mobile devices
 Summary(pl.UTF-8):	Phosh - oparta na czystym wayland powłoka dla urządzeń przenośnych
 Name:		phosh
-Version:	0.42.0
+Version:	0.43.0
 Release:	1
 License:	GPL v3+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/phosh/0.42/%{name}-%{version}.tar.xz
-# Source0-md5:	b112b3cb70fe2e3095d249530858c356
+Source0:	https://download.gnome.org/sources/phosh/0.43/%{name}-%{version}.tar.xz
+# Source0-md5:	7ad054e712c2c97a6b4107d085e12084
 URL:		https://developer.puri.sm/Librem5/Software_Reference/Environments/Phosh.html
 BuildRequires:	NetworkManager-devel >= 2:1.14
 BuildRequires:	alsa-lib-devel
@@ -27,7 +27,7 @@ BuildRequires:	gnome-bluetooth3-devel >= 46.0
 # >= 45 when released
 BuildRequires:	gnome-desktop-devel >= 43
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gsettings-desktop-schemas-devel >= 42
+BuildRequires:	gsettings-desktop-schemas-devel >= 47
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	json-glib-devel >= 1.6.2
 BuildRequires:	libcallaudio-devel >= 0.1
@@ -157,6 +157,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/mobile-data-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-night-light-quick-setting.so
 %{_libdir}/phosh/plugins/night-light-quick-setting.plugin
+%attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-pomodoro-quick-setting.so
+%{_libdir}/phosh/plugins/pomodoro-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-simple-custom-quick-setting.so
 %{_libdir}/phosh/plugins/simple-custom-quick-setting.plugin
 %attr(755,root,root) %{_libdir}/phosh/plugins/libphosh-plugin-ticket-box.so
@@ -167,6 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/phosh/plugins/wifi-hotspot-quick-setting.plugin
 %dir %{_libdir}/phosh/plugins/prefs
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-emergency-info.so
+%attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-pomodoro-quick-setting.so
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-ticket-box.so
 %attr(755,root,root) %{_libdir}/phosh/plugins/prefs/libphosh-plugin-prefs-upcoming-events.so
 %if "%{_libexecdir}" != "%{_libdir}"
@@ -184,6 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xdg-desktop-portal/portals/phosh.portal
 %{_datadir}/dbus-1/services/sm.puri.Phosh.CalendarServer.service
 %{_datadir}/glib-2.0/schemas/00_mobi.Phosh.gschema.override
+%{_datadir}/glib-2.0/schemas/mobi.phosh.plugins.pomodoro.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.enums.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.gschema.xml
 %{_datadir}/glib-2.0/schemas/sm.puri.phosh.plugins.launcher-box.gschema.xml
