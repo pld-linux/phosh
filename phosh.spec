@@ -181,9 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 %{systemduserunitdir}/sm.puri.Phosh.target
 %dir %{systemduserunitdir}/gnome-session@phosh.target.d
 %{systemduserunitdir}/gnome-session@phosh.target.d/session.conf
-# FIXME: which package should own these dirs?
-%dir %{_datadir}/xdg-desktop-portal
-%dir %{_datadir}/xdg-desktop-portal/portals
+%{_datadir}/xdg-desktop-portal/phosh-portals.conf
 %{_datadir}/xdg-desktop-portal/portals/phosh.portal
 %{_datadir}/dbus-1/services/sm.puri.Phosh.CalendarServer.service
 %{_datadir}/glib-2.0/schemas/00_mobi.Phosh.gschema.override
@@ -196,7 +194,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-session/sessions/phosh.session
 %{_datadir}/phosh
 %{_datadir}/wayland-sessions/phosh.desktop
-%{_datadir}/xdg-desktop-portal/phosh-portals.conf
 %{_desktopdir}/sm.puri.Phosh.desktop
 %{_iconsdir}/hicolor/symbolic/apps/sm.puri.Phosh-symbolic.svg
 %{_mandir}/man1/phosh.1*
