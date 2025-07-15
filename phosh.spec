@@ -100,7 +100,7 @@ Dokumentacja API Phosh.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	--default-library=shared \
 	--libexecdir=%{_libexecdir}/phosh \
 	-Dcallui-i18n=true \
@@ -108,12 +108,12 @@ Dokumentacja API Phosh.
 	-Dman=true \
 	-Dtools=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_gidocdir}
