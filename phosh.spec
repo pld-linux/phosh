@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.122
 BuildRequires:	pulseaudio-devel >= 13
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 2.029
+BuildRequires:	rpmbuild(macros) >= 2.042
 # or libelogind >= 241
 BuildRequires:	systemd-devel >= 1:241
 BuildRequires:	tar >= 1:1.22
